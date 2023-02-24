@@ -4,7 +4,7 @@ function generateShape(integer) {
         for (let j = 0; j < integer; j++) {
             str += '+';
         }
-        str += '\n';
+        if (i < integer - 1) str += '\n';
     }
 
     return str;
