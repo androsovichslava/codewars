@@ -1,18 +1,19 @@
-function filterHomogenous(arrays) {
-    // Alea iacta est, code legionary!
-    let res = [];
-
-    arrays.forEach(element => {
+function filterHomogenous(noHomoArray) {
+    let homoArray = [];
+    for (const element of noHomoArray) {
         let flag = true;
         let first = element[0];
-        for (let i = 0; i < element.length; i++) {
+        for (let i = 1; i < element.length; i++) {
             flag = typeof first === typeof element[i];
+            if (!flag) break;
         }
-        if ((flag) && element.length) res.push(element);
-    });
-    return res;
+        if ((flag) && element.length) {
+            homoArray.push(element);
+        }
+    };
+    return homoArray;
 }
 
-let arr = [[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]];
+let arr = [[1, 5, 4], ['a', 3, 5], [1, 'a', 1, 'a', 1], ['b'], [], ['1', 2, 3]];
 
 console.log(filterHomogenous(arr));
