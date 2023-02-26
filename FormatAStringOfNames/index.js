@@ -1,28 +1,35 @@
 // list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
 // // returns 'Bart, Lisa & Maggie'
-function list(names) {
-    //your code here
-    let temp = names.map(elem => elem.name);
-    console.log(temp)
-    let str = '';
-    if (temp.length > 2) {
-        for (let i = 0; i < temp.length - 2; i++) {
-            str += temp[i] + ', ';
-        };
+function list(people) {
+    const names = people.map(person => person.name);
 
-        str += temp[temp.length - 2];
-        str += ' & ' + temp[temp.length - 1];
-    } else if (temp.length > 1) {
-        str = temp[0] + ' & ' + temp[1];
-    } else if (temp.length > 0) {
-        str = temp[0];
-    } else {
-        str = '';
+    if (names.length === 0) {
+        return '';
+    }
+    if (names.length === 1) {
+        return names[0];
     }
 
-    return str;
 
+    // ["A", "B", "C", "D"]
+
+    // let str = '';
+    // for (let i = 0; i < names.length - 2; i++) {
+    //     str += names[i] + ', ';
+    // };
+    // str += names[names.length - 2];
+    // // str === "A, B, C"
+    const withoutLast = names.slice(0, -1).join(', ');
+    const lastElem = names.at(-1); //[names.length - 1];
+
+    // return withoutLast + ' & ' + lastElem;
+    return `${withoutLast} & ${lastElem}`;
+
+
+    // str += ' & ' + names[names.length - 1];
+
+    // return str;
 }
-let arr = [{ name: 'Bart' }, { name: 'Bart' }, { name: 'Bart' }, { name: 'Bart' }];
+let arr = [{ name: 'A' }, { name: 'B' }, { name: 'C' }, { name: 'D' }];
 
 console.log(list(arr));

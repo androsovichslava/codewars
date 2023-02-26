@@ -1,12 +1,12 @@
-var countSheep = function (num) {
+var countSheep = function (numberSheeps) {
     //your code here
-    let res = '';
-    if (num > 0) {
-        for (let i = 1; i <= num; i++) {
-            res += (i + ' sheep...');
+    let resultString = '';
+    if (numberSheeps > 0) {
+        for (let i = 1; i <= numberSheeps; i++) {
+            resultString += (i + ' sheep...');
         }
     }
-    return res;
+    return resultString;
 }
 
-console.log(countSheep(1));
+console.log(countSheep(12));

@@ -1,32 +1,41 @@
 function calculate(expression) {
-    let symArr = expression.split(' ');
-    let stack = [];
-    if (symArr[0] === '') {
-        return 0;
+    const token = expression.split(' ');
+    const stack = [];
+
+    const operators = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+        "*": (a, b) => a * b,
+        "/": (a, b) => a / b,
     }
-    for (let i = symArr.length - 1; i >= 0; i--) {
-        if (isFinite(symArr[i])) {
-            stack.push(Number(symArr[i]));
+
+    for (let i = token.length - 1; i >= 0; i--) {
+        if (!operators.hasOwnProperty(token[i])) {
+            stack.push(Number(token[i]));
         } else {
-            let a = stack.pop();
-            let b = stack.pop();
-            if (symArr[i] === '+') {
-                stack.push(Number(a) + Number(b));
-            } else if (symArr[i] === '-') {
-                stack.push(Number(b) - Number(a));
-            } else if (symArr[i] === '/') {
-                stack.push(Number(a) / Number(b));
-            } else if (symArr[i] === '*') {
-                stack.push(Number(a) * Number(b));
-            }
+            const a = stack.pop();
+            const b = stack.pop();
+            const operator = operators[token[i]];
+
+            stack.push(operator(a, b));
         }
     }
     return stack[0];
 }
 
+// if (token[i] === '+') {
+//     stack.push(a + b);
+// } else if (token[i] === '-') {
+//     stack.push(a - b);
+// } else if (token[i] === '/') {
+//     stack.push(a / b);
+// } else if (token[i] === '*') {
+//     stack.push(a * b);
+// }
 
-console.log(calculate(''));
-console.log(calculate('+ 3 5'));
-console.log(calculate('* + 2 2 3'));
-console.log(calculate('/ + 3 5 * 2 2'));
-console.log(calculate('12.456'));
+// console.log(calculate('* + 2 2 3'));
+
+
+console.log(calculate('- 100 2')); // 98
+console.log(calculate('/ 100 2')); // 50
+console.log(calculate('/ + 30 70 2')); // 50

@@ -1,13 +1,19 @@
 var capitals = function (word) {
 
     // Write your code here
-    let arr = [];
-    word.split('').map((elem, index) => {
-        if (elem == elem.toUpperCase()) {
-            console.log(elem)
-            arr.push(index);
+    const arr = [];
+
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === word[i].toUpperCase()) {
+            arr.push(i);
         }
-    });
+    }
+
+    // word.split('').forEach((elem, index) => {
+    //     if (elem === elem.toUpperCase()) {
+    //         arr.push(index);
+    //     }
+    // });
     return arr;
 };
 
