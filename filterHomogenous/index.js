@@ -1,6 +1,6 @@
-function filterHomogenous(noHomoArray) {
+function filterHomogenous(nonHomoArray) {
     let homoArray = [];
-    for (const element of noHomoArray) {
+    for (const element of nonHomoArray) {
         let flag = true;
         let first = element[0];
         for (let i = 1; i < element.length; i++) {

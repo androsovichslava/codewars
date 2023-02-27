@@ -1,11 +1,10 @@
 // return the magic index
-function findMagic(arr) {
-    let res = -1;
-    arr.forEach((element, i) => {
-        console.log(element, i)
-        if (element === i) res = i;
+function findMagic(sampleArr) {
+    let result = -1;
+    sampleArr.forEach((element, i) => {
+        if (element === i) result = i;
     });
-    return res;
+    return result;
 
 }
 
